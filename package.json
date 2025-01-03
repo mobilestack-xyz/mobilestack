@@ -2,7 +2,10 @@
   "name": "@mobilestack-xyz/mobilestack",
   "version": "1.0.0",
   "private": true,
+  "engines": {
+    "node": "20.17.0"
+  },
   "workspaces": [
     "packages/*"
-  ],
+  ]
 }
