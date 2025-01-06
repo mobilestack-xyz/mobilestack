@@ -22,10 +22,7 @@ module.exports = {
   },
   modulePathIgnorePatterns: ['<rootDir>/node_modules/(.*)/node_modules/react-native'],
   preset: 'react-native',
-  setupFilesAfterEnv: [
-    '<rootDir>/jest_setup.ts',
-    'react-native-gesture-handler/jestSetup.js',
-  ],
+  setupFilesAfterEnv: ['<rootDir>/jest_setup.ts', 'react-native-gesture-handler/jestSetup.js'],
   testPathIgnorePatterns: ['/node_modules/', '<rootDir>/e2e'],
   transform: {
     '^.+\\.tsx?$': [

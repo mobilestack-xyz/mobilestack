@@ -3,10 +3,7 @@ import type { KnipConfig } from 'knip'
 const config: KnipConfig = {
   workspaces: {
     '.': {
-      entry: [
-        '.github/scripts/*.ts',
-        './scripts/**/*.js',
-      ],
+      entry: ['.github/scripts/*.ts', './scripts/**/*.js'],
     },
     'packages/runtime': {
       entry: [
