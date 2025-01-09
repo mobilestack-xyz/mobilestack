@@ -69,7 +69,8 @@
           "domain": "{DOMAIN}"
         }
       ],
-      "@mobilestack-xyz/runtime"
+      "@mobilestack-xyz/runtime",
+      "@config-plugins/detox"
     ]
   }
 }
