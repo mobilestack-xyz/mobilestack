@@ -90,6 +90,7 @@
     "@config-plugins/detox": "^9.0.0",
     "@types/react": "~18.3.12",
     "detox": "^20.32.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3"
   },
   "private": true
