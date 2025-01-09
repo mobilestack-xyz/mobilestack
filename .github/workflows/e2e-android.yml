@@ -8,8 +8,6 @@ on:
 
 jobs:
   android:
-    # TODO re-enable once we have an app in the repo
-    if: false
     env:
       # `if` conditions can't directly access secrets, so we use a workaround
       # See https://docs.github.com/en/actions/security-guides/encrypted-secrets#using-encrypted-secrets-in-a-workflow
@@ -19,7 +17,7 @@ jobs:
     runs-on:
       - nscloud-ubuntu-22.04-amd64-16x64-with-cache
       - nscloud-cache-size-20gb
-      - nscloud-cache-tag-wallet-e2e-android
+      - nscloud-cache-tag-mobilestack-e2e-android
     # We pay by the minute.
     # If it takes longer it usually fails, so no need to pay for more
     timeout-minutes: 25
