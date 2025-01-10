@@ -4,8 +4,8 @@ const sdk = 'iphonesimulator'
 
 module.exports = {
   testRunner: {
-    $0: 'jest',
     args: {
+      $0: 'jest',
       config: require.resolve('./e2e/jest.config.js'),
       _: ['e2e'],
     },

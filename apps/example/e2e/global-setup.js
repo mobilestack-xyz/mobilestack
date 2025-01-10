@@ -8,6 +8,9 @@ async function globalSetup() {
   if (process.env.DETOX_CONFIGURATION?.includes('android')) {
     downloadTestButlerAPK()
   }
+
+  // Inject the e2e env variables
+  require('dotenv').config({ path: `${__dirname}/.env` })
 }
 
 function downloadTestButlerAPK() {
