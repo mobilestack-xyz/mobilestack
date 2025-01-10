@@ -1,4 +1,4 @@
-const iosName = 'Example'
+const iosName = 'MobileStack'
 const derivedDataPath = 'ios/build'
 const sdk = 'iphonesimulator'
 
