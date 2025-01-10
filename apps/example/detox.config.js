@@ -11,11 +11,6 @@ module.exports = {
     },
     forwardEnv: true,
   },
-  behavior: {
-    init: {
-      exposeGlobals: false,
-    },
-  },
   apps: {
     'ios.release': {
       type: 'ios.app',

@@ -1,14 +1,16 @@
-import { E2E_WALLET_MNEMONIC } from 'react-native-dotenv'
 import { createWalletClient, encodeFunctionData, erc20Abi, http, publicActions } from 'viem'
 import { privateKeyToAccount } from 'viem/accounts'
 import { celo } from 'viem/chains'
-import { sleep } from '../../../src/utils/sleep'
 import { DEFAULT_PIN } from '../utils/consts'
 
 const childProcess = require('child_process')
 const fs = require('fs')
 const PNG = require('pngjs').PNG
 const pixelmatch = require('pixelmatch')
+
+export function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms))
+}
 
 function exec(command, options = { cwd: process.cwd() }) {
   return new Promise((resolve, reject) => {
@@ -139,7 +141,7 @@ export async function waitForElementById(testID, { timeout = 10000, index = 0, t
 }
 
 export async function quickOnboarding({
-  mnemonic = E2E_WALLET_MNEMONIC,
+  mnemonic = process.env.E2E_WALLET_MNEMONIC,
   cloudBackupEnabled = false,
   stopOnCYA = false,
 } = {}) {
