@@ -58,6 +58,10 @@ jobs:
           cache: gradle
           path: ${{ env.ANDROID_HOME}}
       - uses: ./.github/actions/yarn-install
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'temurin'
+          java-version: '17'
       - name: Setup runner
         run: |
           set -x
