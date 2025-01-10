@@ -70,7 +70,13 @@
         }
       ],
       "@mobilestack-xyz/runtime",
-      "@config-plugins/detox"
+      "@config-plugins/detox",
+      [
+        "./plugins/withCustomGradleProperties",
+        {
+          "org.gradle.jvmargs": "-Xmx4096m -XX:+HeapDumpOnOutOfMemoryError"
+        }
+      ]
     ]
   }
 }
