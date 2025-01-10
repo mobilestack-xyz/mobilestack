@@ -129,12 +129,8 @@ jobs:
           E2E_WALLET_SINGLE_VERIFIED_MNEMONIC: ${{ steps.google-secrets.outputs.E2E_WALLET_SINGLE_VERIFIED_MNEMONIC }}
           E2E_WALLET_MULTIPLE_VERIFIED_MNEMONIC: ${{ steps.google-secrets.outputs.E2E_WALLET_MULTIPLE_VERIFIED_MNEMONIC }}
           E2E_WALLET_12_WORDS_MNEMONIC: ${{ steps.google-secrets.outputs.E2E_WALLET_12_WORDS_MNEMONIC }}
-      - name: Breakpoint if tests failed
-        if: failure()
-        uses: namespacelabs/breakpoint-action@v0
-        with:
-          duration: 30m
-          authorized-users: jeanregisser
+      # Disabled for now, as the reports are sent to the wrong build
+      # See https://github.com/mikepenz/action-junit-report/issues/40
       # - name: Publish Android JUnit Report
       #   if: always()
       #   uses: mikepenz/action-junit-report@v4
