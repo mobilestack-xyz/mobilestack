@@ -6,7 +6,14 @@ const config: KnipConfig = {
       entry: ['.github/scripts/*.ts', './scripts/**/*.js'],
     },
     'apps/example': {
-      entry: ['index.ts!', 'metro.config.js!'],
+      entry: [
+        'index.ts!',
+        'metro.config.js!',
+        'detox.config.js!',
+        'plugins/**/*.{js,ts}',
+        'e2e/**/*.js',
+        'e2e/**/*.ts',
+      ],
       ignoreDependencies: [
         '@babel/core', // needed for react-native
         // TODO: these ignores should be unnecessary once we use a recent version of knip with th expo plugin
@@ -22,14 +29,7 @@ const config: KnipConfig = {
       ],
     },
     'packages/runtime': {
-      entry: [
-        'index.js!',
-        'metro.config.js!',
-        // TODO: move these e2e files once we have a e2e setup in the new monorepo
-        'e2e/**/*.js',
-        'e2e/**/*.ts',
-        './scripts/**/*.js',
-      ],
+      entry: ['index.js!', 'metro.config.js!', './scripts/**/*.js'],
       project: ['src/**/*.ts!', 'src/**/*.tsx!', 'src/**/*.js!'],
       ignoreDependencies: [
         '@actions/github',
@@ -65,7 +65,6 @@ const config: KnipConfig = {
         'src/redux/reducersForSchemaGeneration.ts', // used for root state schema generation
         'src/analytics/docs.ts', // documents analytics events, no references
         'src/account/__mocks__/Persona.tsx', // unit test mocks
-        'src/firebase/remoteConfigValuesDefaults.e2e.ts', // e2e test setup
         'src/setupE2eEnv.e2e.ts', // e2e test setup
       ],
     },

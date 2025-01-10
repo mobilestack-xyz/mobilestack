@@ -61,7 +61,7 @@ jobs:
           java-version: '17'
       - uses: ./.github/actions/yarn-install
       - name: Prebuild
-        run: yarn prebuild
+        run: yarn run prebuild
         working-directory: apps/example
       - name: Store compileSdkVersion in env
         run: echo "ANDROID_COMPILE_SDK_VERSION=$(grep 'compileSdkVersion' apps/example/android/build.gradle | grep -o '[0-9]\+')" >> $GITHUB_ENV
@@ -102,7 +102,7 @@ jobs:
         run: NODE_OPTIONS='--unhandled-rejections=strict' yarn ts-node ./e2e/scripts/check-e2e-wallet-balance.ts
         working-directory: apps/example
       - name: Create Detox Build
-        run: yarn e2e:build:android-release
+        run: yarn run e2e:build:android-release
         working-directory: apps/example
       - name: Run Detox
         run: >
