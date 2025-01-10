@@ -31,13 +31,13 @@ module.exports = {
       type: 'android.apk',
       binaryPath: 'android/app/build/outputs/apk/debug/app-debug.apk',
       build:
-        'pushd android; ./gradlew app:assembleDebug app:assembleAndroidTest -DtestBuildType=debug; popd',
+        'pushd android && ./gradlew app:assembleDebug app:assembleAndroidTest -DtestBuildType=debug && popd',
     },
     'android.release': {
       type: 'android.apk',
       binaryPath: 'android/app/build/outputs/apk/release/app-release.apk',
       build:
-        'pushd android; ./gradlew app:assembleRelease app:assembleAndroidTest -DtestBuildType=release; popd',
+        'pushd android && ./gradlew app:assembleRelease app:assembleAndroidTest -DtestBuildType=release && popd',
     },
   },
   devices: {
