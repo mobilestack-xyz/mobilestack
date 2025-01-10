@@ -409,10 +409,11 @@ describe('ReviewScreen', () => {
         </Provider>
       )
 
-      expect(queryByTestId('expiredQuoteDialog')).toBeFalsy()
       await act(() => {
         jest.advanceTimersByTime(expireMs + 1)
       })
+
+      expect(queryByTestId('expiredQuoteDialog')).toBeFalsy()
 
       fireEvent.press(getByTestId('submitButton'))
 
