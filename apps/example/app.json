@@ -48,6 +48,8 @@
         "expo-build-properties",
         {
           "ios": {
+            // Minimum iOS version we support
+            "deploymentTarget": "15.1",
             "useFrameworks": "static"
           },
           "android": {
