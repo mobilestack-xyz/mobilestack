@@ -4,9 +4,6 @@ import { celo } from 'viem/chains'
 import { DEFAULT_PIN } from '../utils/consts'
 
 const childProcess = require('child_process')
-const fs = require('fs')
-const PNG = require('pngjs').PNG
-const pixelmatch = require('pixelmatch')
 
 export function sleep(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms))
@@ -226,24 +223,6 @@ export async function quickOnboarding({
     // Assert on Wallet Home Screen
     await expect(element(by.id('HomeAction-Send'))).toBeVisible()
   } catch {} // Don't throw an error just silently continue
-}
-
-export async function pixelDiff(imagePath, expectedImagePath, acceptableDiffPercent = 2.5) {
-  const img1 = PNG.sync.read(fs.readFileSync(imagePath))
-  const img2 = PNG.sync.read(fs.readFileSync(expectedImagePath))
-  const { width, height } = img1
-  const totalPixels = width * height
-  const allowableError = (totalPixels / 100) * acceptableDiffPercent
-  const diff = new PNG({ width, height })
-  let diffPixels = pixelmatch(img1.data, img2.data, diff.data, width, height, { threshold: 0.1 })
-  let percentDiff = ((diffPixels / totalPixels) * 100).toFixed(2)
-  if (diffPixels > allowableError) {
-    // TODO: Write diff.png to artifacts if failed
-    // fs.writeFileSync('diff.png', PNG.sync.write(diff))
-    throw new Error(
-      `Expected image at ${imagePath} to match to image at ${expectedImagePath}, but it had ${percentDiff}% pixel diff!`
-    )
-  }
 }
 
 //** Sets device demo mode on devices for consistent screenshots */

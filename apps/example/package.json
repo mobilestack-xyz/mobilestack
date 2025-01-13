@@ -89,10 +89,22 @@
   "devDependencies": {
     "@babel/core": "^7.25.2",
     "@config-plugins/detox": "^9.0.0",
+    "@faker-js/faker": "^5.5.3",
+    "@mento-protocol/mento-sdk": "^0.2.3",
+    "@types/fs-extra": "^9.0.13",
     "@types/react": "~18.3.12",
+    "@walletconnect/sign-client": "^2.13.3",
     "detox": "^20.32.0",
+    "dotenv": "^16.3.1",
+    "ethers": "^5.7.2",
+    "expect": "^29.7.0",
+    "@expo/config-plugins": "~9.0.12",
+    "lodash": "^4.17.21",
     "ts-node": "^10.9.2",
-    "typescript": "^5.3.3"
+    "ts-retry-promise": "^0.6.0",
+    "twilio": "^3.69.0",
+    "typescript": "^5.3.3",
+    "viem": "^2.21.55"
   },
   "private": true
 }

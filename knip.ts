@@ -4,6 +4,12 @@ const config: KnipConfig = {
   workspaces: {
     '.': {
       entry: ['.github/scripts/*.ts', './scripts/**/*.js'],
+      ignoreBinaries: [
+        // Maybe we can remove these once we upgrade knip?
+        // See https://github.com/webpro-nl/knip/issues/735
+        'prebuild', // used in workflows to build the example app
+        'e2e:build:android-release', // used in workflows to build the example app
+      ],
     },
     'apps/example': {
       entry: [
@@ -11,8 +17,7 @@ const config: KnipConfig = {
         'metro.config.js!',
         'detox.config.js!',
         'plugins/**/*.{js,ts}',
-        'e2e/**/*.js',
-        'e2e/**/*.ts',
+        'e2e/**/*.{js,ts}',
       ],
       ignoreDependencies: [
         '@babel/core', // needed for react-native
@@ -26,6 +31,7 @@ const config: KnipConfig = {
         'babel-preset-expo', // not listed in package.json so we use the version used by expo
         'babel-plugin-module-resolver', // not listed in package.json so we use the version from the runtime for now
         'ts-node', // used in workflows run by github actions from the example app dir
+        '@walletconnect/core', // used in e2e tests via @walletconnect/sign-client
       ],
     },
     'packages/runtime': {
@@ -48,18 +54,6 @@ const config: KnipConfig = {
         'typescript-json-schema', // helps manage redux state migrations
         '@types/jest',
         'husky',
-        // Following ignores are used by the e2e test
-        // TODO: remove these once we have a e2e setup in the new monorepo
-        '@faker-js/faker',
-        '@mento-protocol/mento-sdk',
-        '@types/fs-extra',
-        '@walletconnect/sign-client',
-        'dotenv',
-        'ethers',
-        'expect',
-        'pixelmatch',
-        'ts-retry-promise',
-        'twilio',
       ],
       ignore: [
         'src/redux/reducersForSchemaGeneration.ts', // used for root state schema generation
