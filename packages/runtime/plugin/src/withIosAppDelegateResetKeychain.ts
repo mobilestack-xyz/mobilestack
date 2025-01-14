@@ -38,8 +38,6 @@ const INVOCATION_LINE_MATCHER =
   /-\s*\(BOOL\)\s*application:\s*\(UIApplication\s*\*\s*\)\s*\w+\s+didFinishLaunchingWithOptions:/g
 
 function addResetKeychainFunction(src: string): MergeResults {
-  const newSrc = ['#if canImport(GoogleMaps)', 'import GoogleMaps', '#endif']
-
   return mergeContents({
     tag: '@mobilestack-xyz/runtime/app-delegate-reset-keychain-function',
     src,
