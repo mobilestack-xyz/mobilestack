@@ -87,24 +87,26 @@ jobs:
           E2E_WALLET_SINGLE_VERIFIED_MNEMONIC: ${{ steps.google-secrets.outputs.E2E_WALLET_SINGLE_VERIFIED_MNEMONIC }}
           E2E_WALLET_MULTIPLE_VERIFIED_MNEMONIC: ${{ steps.google-secrets.outputs.E2E_WALLET_MULTIPLE_VERIFIED_MNEMONIC }}
           E2E_WALLET_12_WORDS_MNEMONIC: ${{ steps.google-secrets.outputs.E2E_WALLET_12_WORDS_MNEMONIC }}
-      - name: Publish iOS JUnit Report
-        if: always()
-        uses: mikepenz/action-junit-report@v4
-        with:
-          check_name: iOS (${{ inputs.ios-version }}) e2e Test Report
-          report_paths: 'e2e/test-results/junit.xml'
+      # Disabled for now, as the reports are sent to the wrong build
+      # See https://github.com/mikepenz/action-junit-report/issues/40
+      # - name: Publish iOS JUnit Report
+      #   if: always()
+      #   uses: mikepenz/action-junit-report@v4
+      #   with:
+      #     check_name: iOS (${{ inputs.ios-version }}) e2e Test Report
+      #     report_paths: 'e2e/test-results/junit.xml'
       - name: 'Upload iOS E2E Artifacts'
         if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: ios-${{ inputs.ios-version }}-e2e-artifact
-          path: e2e/artifacts
+          path: apps/example/e2e/artifacts
       - name: 'Upload iOS E2E HTML Report'
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: ios-${{ inputs.ios-version }}-test-report
-          path: e2e/test-results
+          path: apps/example/e2e/test-results
       - name: 'Close simulators'
         if: always()
         run: xcrun simctl shutdown all
