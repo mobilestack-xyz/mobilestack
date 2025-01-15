@@ -1,7 +1,10 @@
 // Inspired by https://github.com/expo/expo/blob/03e99016c9c5b9ad47864b204511ded2dec80375/packages/%40expo/config-plugins/src/ios/Maps.ts#L6
 import { ConfigPlugin, withAppDelegate } from '@expo/config-plugins'
 import { mergeContents, MergeResults } from '@expo/config-plugins/build/utils/generateCode'
-import { APPLICATION_DID_FINISH_LAUNCHING_LINE_MATCHER, APPLICATION_DID_FINISH_LAUNCHING_LINE_MATCHER_MULTILINE } from './consts'
+import {
+  APPLICATION_DID_FINISH_LAUNCHING_LINE_MATCHER,
+  APPLICATION_DID_FINISH_LAUNCHING_LINE_MATCHER_MULTILINE,
+} from './consts'
 
 function getUserAgentCode(appName: string) {
   return `
