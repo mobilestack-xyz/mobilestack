@@ -8,7 +8,7 @@ if (!expoConfig) {
 }
 
 // Create Mobile Stack app
-const app = createApp({
+const App = createApp({
   // For now use 'Valora' so CPV works (since it's known by identity-service)
   // TODO: find a better long term solution
   registryName: 'Valora',
@@ -32,4 +32,4 @@ const app = createApp({
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
 // It also ensures that whether you load the app in Expo Go or in a native build,
 // the environment is set up appropriately
-registerRootComponent(app)
+registerRootComponent(App)
