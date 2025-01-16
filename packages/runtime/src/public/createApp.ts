@@ -14,6 +14,29 @@ export interface PublicAppConfig {
   deepLinkUrlScheme: string
   iosAppStoreId?: string
 
+  // Theme configuration
+  theme?: {
+    // Rough example of what we might want to support
+    colors?: {
+      // Core brand colors
+      primary?: string
+      secondary?: string
+      background?: string
+
+      // Semantic colors
+      error?: string
+      success?: string
+      warning?: string
+
+      // Text colors
+      text?: {
+        primary?: string
+        secondary?: string
+        disabled?: string
+      }
+    }
+  }
+
   // Optional features/capabilities
   features?: {
     firebase?: boolean
