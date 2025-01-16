@@ -12,7 +12,11 @@ export interface PublicAppConfig {
   registryName: string
   displayName: string
   deepLinkUrlScheme: string
-  iosAppStoreId?: string
+
+  // Platform specific configuration
+  ios?: {
+    appStoreId?: string
+  }
 
   // Theme configuration
   theme?: {
