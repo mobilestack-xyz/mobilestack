@@ -8,6 +8,13 @@ import { ToggleableOnboardingFeatures } from 'src/onboarding/types'
 // This will evolve. We should be mindful of breaking changes.
 // This structure should scale well as we add more features
 // and makes it clear what's core configuration vs optional features.
+//
+// Guidelines:
+// - We should only have a few core configuration options, and the rest should be optional features and/or with default values
+// - We should only add new configuration options that we want to support long term, and not just for a specific app
+// - Configuration options should be well documented and have clear purposes
+// - Breaking changes to configuration should be avoided when possible
+// - Configuration should be type-safe. In some cases we can consider runtime validation.
 export interface PublicAppConfig {
   registryName: string
   displayName: string
