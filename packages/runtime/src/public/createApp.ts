@@ -112,7 +112,7 @@ export function createApp(config: PublicAppConfig) {
   Config.FIREBASE_ENABLED = 'false'
   Config.SHOW_TESTNET_BANNER = 'false'
   Config.APP_BUNDLE_ID = DeviceInfo.getBundleId()
-  Config.APP_STORE_ID = config.iosAppStoreId
+  Config.APP_STORE_ID = config.ios?.appStoreId
   Config.APP_DISPLAY_NAME = config.displayName
   Config.SENTRY_ENABLED = config.features?.sentry?.clientUrl ? 'true' : 'false'
   Config.AUTH0_DOMAIN = config.features?.cloudBackup?.auth0Domain ?? 'auth.valora.xyz'
