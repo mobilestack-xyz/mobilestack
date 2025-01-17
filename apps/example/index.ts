@@ -21,10 +21,7 @@ const App = createApp({
   features: {
     // Special case for e2e tests as it doesn't handle cloud backup
     ...(process.env.EXPO_PUBLIC_MOBILE_STACK_E2E === 'true' && {
-      onboarding: {
-        enableBiometry: true,
-        protectWallet: true,
-      },
+      cloudBackup: false,
     }),
   },
 })

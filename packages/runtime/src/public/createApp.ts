@@ -55,14 +55,8 @@ export interface PublicAppConfig {
       clientUrl: string
     }
     // TODO: what's the marketing name for this?
-    cloudBackup?: {
-      auth0Domain: string
-      auth0ClientId: string
-      web3AuthClientId: string
-    }
+    cloudBackup?: boolean
     onboarding?: {
-      cloudBackup?: boolean
-      cloudBackupSetupInOnboarding?: boolean
       enableBiometry?: boolean
       protectWallet?: boolean
     }
@@ -79,25 +73,21 @@ export interface PublicAppConfig {
 
 // Note: could be nice to have a direct mapping, but for now it's explicit and simple
 // but we have to remember to expose new features
-function getOnboardingFeatures(
-  config: Exclude<PublicAppConfig['features'], undefined>['onboarding'] = {
-    cloudBackup: true,
-    cloudBackupSetupInOnboarding: true,
+function getOnboardingFeatures(config: PublicAppConfig) {
+  const onboardingConfig = config.features?.onboarding ?? {
     enableBiometry: true,
     protectWallet: true,
   }
-) {
+
   const onboardingFeatures = []
-  if (config.cloudBackup) {
+  if (config.features?.cloudBackup) {
     onboardingFeatures.push(ToggleableOnboardingFeatures.CloudBackup)
-  }
-  if (config.cloudBackupSetupInOnboarding) {
     onboardingFeatures.push(ToggleableOnboardingFeatures.CloudBackupSetupInOnboarding)
   }
-  if (config.enableBiometry) {
+  if (onboardingConfig) {
     onboardingFeatures.push(ToggleableOnboardingFeatures.EnableBiometry)
   }
-  if (config.protectWallet) {
+  if (onboardingConfig) {
     onboardingFeatures.push(ToggleableOnboardingFeatures.ProtectWallet)
   }
   return onboardingFeatures.join(',')
@@ -115,8 +105,8 @@ export function createApp(config: PublicAppConfig) {
   Config.APP_STORE_ID = config.ios?.appStoreId
   Config.APP_DISPLAY_NAME = config.displayName
   Config.SENTRY_ENABLED = config.features?.sentry?.clientUrl ? 'true' : 'false'
-  Config.AUTH0_DOMAIN = config.features?.cloudBackup?.auth0Domain ?? 'auth.valora.xyz'
-  Config.ONBOARDING_FEATURES_ENABLED = getOnboardingFeatures(config.features?.onboarding)
+  Config.AUTH0_DOMAIN = 'auth.valora.xyz' // TODO: also set auth0ClientId and web3AuthClientId that are needed for cloud backup
+  Config.ONBOARDING_FEATURES_ENABLED = getOnboardingFeatures(config)
   Config.DEEP_LINK_URL_SCHEME = config.deepLinkUrlScheme
   Config.APP_REGISTRY_NAME = config.registryName
 
