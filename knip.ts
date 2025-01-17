@@ -56,8 +56,6 @@ const config: KnipConfig = {
         '@types/jest',
         'husky',
         '@tsconfig/node-lts', // used in plugin/tsconfig.json
-        'src/app/App', // not sure why it complains about this
-        'src/onboarding/types', // not sure why it complains about this
       ],
       ignore: [
         'src/redux/reducersForSchemaGeneration.ts', // used for root state schema generation

@@ -3,7 +3,7 @@
 import '@mobilestack-xyz/runtime/src/missingGlobals'
 import Config from 'react-native-config'
 import DeviceInfo from 'react-native-device-info'
-import { ToggleableOnboardingFeatures } from 'src/onboarding/types'
+import { ToggleableOnboardingFeatures } from '../onboarding/types'
 
 // This will evolve. We should be mindful of breaking changes.
 // This structure should scale well as we add more features
@@ -116,6 +116,6 @@ export function createApp(config: PublicAppConfig) {
 
   // TODO: map/handle the whole config
 
-  const App = require('src/app/App').default
+  const App = require('../app/App').default
   return App
 }
