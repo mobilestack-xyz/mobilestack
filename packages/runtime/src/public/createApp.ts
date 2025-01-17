@@ -26,24 +26,28 @@ export interface PublicAppConfig {
   }
 
   // Theme configuration
-  theme?: {
+  themes?: {
     // Rough example of what we might want to support
-    colors?: {
-      // Core brand colors
-      primary?: string
-      secondary?: string
-      background?: string
-
-      // Semantic colors
-      error?: string
-      success?: string
-      warning?: string
-
-      // Text colors
-      text?: {
+    default: {
+      // To adjust status bar style, keyboard appearance, etc
+      isDark?: boolean
+      colors?: {
+        // Core brand colors
         primary?: string
         secondary?: string
-        disabled?: string
+        background?: string
+
+        // Semantic colors
+        error?: string
+        success?: string
+        warning?: string
+
+        // Text colors
+        text?: {
+          primary?: string
+          secondary?: string
+          disabled?: string
+        }
       }
     }
   }
