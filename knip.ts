@@ -56,14 +56,14 @@ const config: KnipConfig = {
         '@types/jest',
         'husky',
         '@tsconfig/node-lts', // used in plugin/tsconfig.json
+        'src/app/App', // not sure why it complains about this
+        'src/onboarding/types', // not sure why it complains about this
       ],
       ignore: [
         'src/redux/reducersForSchemaGeneration.ts', // used for root state schema generation
         'src/analytics/docs.ts', // documents analytics events, no references
         'src/account/__mocks__/Persona.tsx', // unit test mocks
         'src/setupE2eEnv.e2e.ts', // e2e test setup
-        'src/app/App', // not sure why it complains about this
-        'src/onboarding/types', // not sure why it complains about this
       ],
     },
   },
