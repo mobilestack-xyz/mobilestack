@@ -62,6 +62,8 @@ const config: KnipConfig = {
         'src/analytics/docs.ts', // documents analytics events, no references
         'src/account/__mocks__/Persona.tsx', // unit test mocks
         'src/setupE2eEnv.e2e.ts', // e2e test setup
+        'src/app/App', // not sure why it complains about this
+        'src/onboarding/types', // not sure why it complains about this
       ],
     },
   },

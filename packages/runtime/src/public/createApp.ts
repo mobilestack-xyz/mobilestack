@@ -15,7 +15,7 @@ import { ToggleableOnboardingFeatures } from 'src/onboarding/types'
 // - Configuration options should be well documented and have clear purposes
 // - Breaking changes to configuration should be avoided when possible
 // - Configuration should be type-safe. In some cases we can consider runtime validation.
-export interface PublicAppConfig {
+interface PublicAppConfig {
   registryName: string
   displayName: string
   deepLinkUrlScheme: string
