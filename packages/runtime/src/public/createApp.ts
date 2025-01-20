@@ -54,31 +54,40 @@ interface PublicAppConfig {
 
   // Optional features/capabilities
   features?: {
-    firebase?: boolean
     sentry?: {
       clientUrl: string
     }
     // TODO: what's the marketing name for this?
     cloudBackup?: boolean
-    onboarding?: {
-      enableBiometry?: boolean
-      protectWallet?: boolean
-    }
     walletConnect?: {
       projectId: string
     }
   }
 
   //
-  network?: {
+  networks?: {
     // TODO: we'll pass RPC urls, API urls, etc here
+  }
+
+  /**
+   * Experimental features that may change or be removed in future versions.
+   * These features are not part of the stable configuration API and should be used with caution.
+   *
+   * Features may graduate to the stable API or be removed entirely.
+   */
+  experimental?: {
+    firebase?: boolean
+    onboarding?: {
+      enableBiometry?: boolean
+      protectWallet?: boolean
+    }
   }
 }
 
 // Note: could be nice to have a direct mapping, but for now it's explicit and simple
 // but we have to remember to expose new features
 function getOnboardingFeatures(config: PublicAppConfig) {
-  const onboardingConfig = config.features?.onboarding ?? {
+  const onboardingConfig = config.experimental?.onboarding ?? {
     enableBiometry: true,
     protectWallet: true,
   }
@@ -108,7 +117,7 @@ export function createApp(config: PublicAppConfig) {
   Config.DEFAULT_TESTNET = 'mainnet'
   Config.DEV_SETTINGS_ACTIVE_INITIALLY = 'false'
   Config.DEV_RESTORE_NAV_STATE_ON_RELOAD = 'false'
-  Config.FIREBASE_ENABLED = 'false'
+  Config.FIREBASE_ENABLED = config.experimental?.firebase ? 'true' : 'false'
   Config.SHOW_TESTNET_BANNER = 'false'
   Config.APP_BUNDLE_ID = DeviceInfo.getBundleId()
   Config.APP_STORE_ID = config.ios?.appStoreId
